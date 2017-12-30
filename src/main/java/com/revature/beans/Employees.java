@@ -3,7 +3,8 @@ package com.revature.beans;
 public class Employees {
 	private int eid;
 	private String username;
-	private int reportsto;
+	private int supervisor;
+	private int deptHead;
 	private boolean isdeptHead;
 	private boolean isBenCo;
 	private String firstname;
@@ -12,12 +13,12 @@ public class Employees {
 	private int password;	
 	
 	public Employees() {	}
-	public Employees(int eid, String username, int reportsto, boolean isdeptHead, boolean isBenCo, String firstname,
+	public Employees(int eid, String username, int supervisor, int deptHead, boolean isdeptHead, boolean isBenCo, String firstname,
 			String lastname, int available, int password) {
 		super();
 		this.eid = eid;
 		this.username = username;
-		this.reportsto = reportsto;
+		this.supervisor = supervisor;
 		this.isdeptHead = isdeptHead;
 		this.isBenCo = isBenCo;
 		this.firstname = firstname;
@@ -37,11 +38,18 @@ public class Employees {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public int getReportsto() {
-		return reportsto;
+	
+	public int getSupervisor() {
+		return supervisor;
 	}
-	public void setReportsto(int reportsto) {
-		this.reportsto = reportsto;
+	public void setSupervisor(int supervisor) {
+		this.supervisor = supervisor;
+	}
+	public int getDeptHead() {
+		return deptHead;
+	}
+	public void setDeptHead(int deptHead) {
+		this.deptHead = deptHead;
 	}
 	public boolean isIsdeptHead() {
 		return isdeptHead;
@@ -73,7 +81,7 @@ public class Employees {
 	public void setAvailable(int available) {
 		Available = available;
 	}
-		public int getPassword() {
+	public int getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {

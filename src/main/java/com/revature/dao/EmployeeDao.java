@@ -25,13 +25,15 @@ public class EmployeeDao {
 				
 				if(pwd.equals(password)) {
 					int eid = rs.getInt("eid");
-					int reportsto = rs.getInt("reportsto");
+					int supervisor = rs.getInt("supervisor");
+					int deptHead = rs.getInt("deptHead");
 					String firstname = rs.getString("firstname");
 					String lastname = rs.getString("lastname");
 					String isDeptHead = rs.getString("isDeptHead");
 					String isBenCo = rs.getString("isBenCo");
 					emp.setEid(eid);
-					emp.setReportsto(reportsto);
+					emp.setSupervisor(supervisor);
+					emp.setDeptHead(deptHead);
 					emp.setFirstname(firstname);
 					emp.setLastname(lastname);	
 					emp.setBenCo(Boolean.parseBoolean(isBenCo));

@@ -24,9 +24,7 @@ public class DeptHeadViewServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Employees emp = (Employees) session.getAttribute("emp");
-		System.out.println(emp.getEid());
 		boolean login = (boolean) session.getAttribute("login");
-		System.out.println(login);
 		if(login) {
 			ReimbursementDao dao = new ReimbursementDao();
 			List<Reimbursements> reimb = dao.getDeptHeadReimbursements(emp.getEid());

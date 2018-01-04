@@ -9,15 +9,15 @@
     <servlet-class>com.revature.controllers.EmployeeViewServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>DeptHeadViewServlet</servlet-name>
-  	<servlet-class>com.revataure.controllers.DeptHeadViewServlet</servlet-class>
+    <servlet-name>DeptHeadViewServlet</servlet-name>
+    <servlet-class>com.revataure.controllers.DeptHeadViewServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EmployeeViewServlet</servlet-name>
     <url-pattern>/employeeview</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>DeptHeadViewServlet</servlet-name>
-  	<url-pattern>/deptheadview</url-pattern>
+    <servlet-name>DeptHeadViewServlet</servlet-name>
+    <url-pattern>/deptheadview</url-pattern>
   </servlet-mapping>
 </web-app>

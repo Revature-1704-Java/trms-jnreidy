@@ -7,7 +7,7 @@
 
 <meta charset="UTF-8">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-<title>DepartmentHead</title>
+<title>EmployeeView</title>
 </head>
 <body>
 <script src=view.js></script>
@@ -20,7 +20,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Create<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="login">Logout</a>
@@ -39,8 +39,7 @@
 			<td>Type</td>
 			<td>Description</td>
 			<td>Status</td>
-			<td>Approve</td>
-			<td>Deny</td>
+			<td>Delete</td>
 		</tr>
 		<% List<Reimbursements> reimb = (List<Reimbursements>) request.getSession().getAttribute("reimbursements");%>
 		<% for(int i = 0; i < reimb.size(); i++){ %>
@@ -51,8 +50,7 @@
 			<td><%= reimb.get(i).getRtype()%></td>
 			<td><%= reimb.get(i).getDescription() %></td>
 			<td><%= reimb.get(i).getStatus() %> </td>	
-			<td><button id="approveButton<%=reimb.get(i).getRid()%>" type="button" onclick='deptHeadApprove(<%=reimb.get(i).getRid()%>)'>Approve</button>
-			<td><button id="denyButton<%=reimb.get(i).getRid()%>" type="button" onclick='deptHeadDeny(<%=reimb.get(i).getRid()%>)'>Deny</button></td>
+			<td><button id="deleteButton<%=reimb.get(i).getRid()%>" type="button" onclick='deleteReimb(<%=reimb.get(i).getRid()%>)'>Delete</button>
 		</tr> 
 		<% } %>	
 	</tbody>

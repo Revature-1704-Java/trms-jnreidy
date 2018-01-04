@@ -42,18 +42,18 @@ public class ReimbursementDao {
 	public List<Reimbursements> getMyReimbursements(int eid){
 		PreparedStatement prepstate; 
 		List<Reimbursements> reimburse = new ArrayList<>();
-		String sql = "select * from reimburesments where eid = ?";
+		String sql = "select * from reimbursements where eid = ?";
 		try(Connection conn = ConnectionUtil.getConnection()){
 			prepstate = conn.prepareStatement(sql);
 			prepstate.setInt(1, eid);
 			ResultSet rs = prepstate.executeQuery();
 			while(rs.next()) {
-				int rid = rs.getInt("id");
-				double amount = rs.getDouble("amount");
+				int rid = rs.getInt("rid");
+				double amount = rs.getDouble("Reimbursement");
 				double cost = rs.getDouble("cost");
 				String status = rs.getString("status");
 				String rtype = rs.getString("rtype");
-				String description = rs.getString("descripton");                        
+				String description = rs.getString("description");                        
 				
 				Reimbursements r = new Reimbursements(rid, eid, cost, amount, rtype, description, status);
 				reimburse.add(r);

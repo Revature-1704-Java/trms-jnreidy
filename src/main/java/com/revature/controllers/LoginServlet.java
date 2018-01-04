@@ -43,7 +43,9 @@ public class LoginServlet extends HttpServlet {
 		}
 		else if(emp.getEid() > 0){
 			session.setAttribute("emp", emp);
-			response.sendRedirect("EmployeeView.html");
+			session.setAttribute("login", true);
+			RequestDispatcher rd = request.getRequestDispatcher("EmployeeView");
+			rd.forward(request, response);
 		} else {
 			session.setAttribute("login", false);
 			response.sendRedirect("login");

@@ -1,5 +1,6 @@
 package com.revature.util;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,15 +10,27 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class ConnectionUtil {
+	static {
+		 		try {
+		 			Class.forName("oracle.jdbc.OracleDriver");
+				} catch (ClassNotFoundException e) {
+		 			e.getStackTrace();
+		 		}
+		 	}
+	
 	public static Connection getConnection() throws SQLException, IOException{
-		Properties prop = new Properties();
-		InputStream in = new FileInputStream("connection.properties");
-		prop.load(in);
+		//File f = new File(".");
+		//for(String i: f.list()) {
+		//	System.out.println(i);
+		//}
+		//Properties prop = new Properties();
+		//InputStream in = new FileInputStream("connection.properties");
+		//prop.load(in);
 		
-		String url = prop.getProperty("url");
-		String user = prop.getProperty("user");
-		String password = prop.getProperty("password");
+//		String url = prop.getProperty("url");
+//		String user = prop.getProperty("user");
+//		String password = prop.getProperty("password");
 		
-		return DriverManager.getConnection(url, user, password);
+		return DriverManager.getConnection("jdbc:oracle:thin:@renature-sql-instance.cffylvuupdae.us-east-2.rds.amazonaws.com:1521:ORCL", "trms", "p4ssw0rd");
 	}
 }

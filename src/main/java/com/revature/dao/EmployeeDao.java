@@ -12,32 +12,37 @@ public class EmployeeDao {
 	public Employees loginEmp(String username, String password) {
 		//return to servlet if deptHead is true
 		//render manager view
+		int hashedpass = password.hashCode();
 		Employees emp = new Employees();
 		PreparedStatement prepstate;
-		String sql = "select * from employees where username = ?";
+		String sql = "select * from employees where email = ?";
 		try(Connection conn = ConnectionUtil.getConnection()){
+			
 			prepstate = conn.prepareStatement(sql);
 			prepstate.setString(1, username);
 			ResultSet rs = prepstate.executeQuery();
-			
+
 			while(rs.next()) {
-				String pwd = rs.getString("password");
-				
-				if(pwd.equals(password)) {
+				int pwd = rs.getInt("password");
+
+				if(pwd == hashedpass) {
+
 					int eid = rs.getInt("eid");
 					int supervisor = rs.getInt("supervisor");
-					int deptHead = rs.getInt("deptHead");
+					int deptHead = rs.getInt("departmentHead");
 					String firstname = rs.getString("firstname");
 					String lastname = rs.getString("lastname");
-					String isDeptHead = rs.getString("isDeptHead");
-					String isBenCo = rs.getString("isBenCo");
+					int isDeptHead = rs.getInt("isDeptHead");
+					int isBenCo = rs.getInt("isBenCo");
 					emp.setEid(eid);
 					emp.setSupervisor(supervisor);
 					emp.setDeptHead(deptHead);
 					emp.setFirstname(firstname);
-					emp.setLastname(lastname);	
-					emp.setBenCo(Boolean.parseBoolean(isBenCo));
-					emp.setIsdeptHead(Boolean.parseBoolean(isDeptHead));
+					emp.setLastname(lastname);
+					boolean boolBenCo = (isBenCo != 0);
+					boolean boolDeptHead = (isDeptHead != 0);
+					emp.setBenCo(boolBenCo);
+					emp.setIsDeptHead(boolDeptHead);
 				}
 				else {
 					return null;

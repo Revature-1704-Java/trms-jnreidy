@@ -70,8 +70,7 @@ public class ReimbursementDao {
 	public List<Reimbursements> getSupervisorReimbursements(int eid){
 		PreparedStatement prepstate;
 		List<Reimbursements> reimburse = new ArrayList<>();
-		String sql = "select * from reimburesments r where r.eid in "
-				+ "{select eid from employees e join employees emp on emp.eid = e.supervisor where emp.eid = ?}";
+		String sql = "select * from reimbursements r join employees e on e.eid = r.eid join employees emp on emp.eid = e.supervisor where e.eid=?";
 		try(Connection conn = ConnectionUtil.getConnection()){
 			prepstate = conn.prepareStatement(sql);
 			prepstate.setInt(1,  eid);
@@ -83,6 +82,31 @@ public class ReimbursementDao {
 				String status = rs.getString("status");
 				String rtype = rs.getString("rtype");
 				String description = rs.getString("descripton"); 		
+				
+				Reimbursements r = new Reimbursements(rid, eid, cost, amount, rtype, description, status);
+				reimburse.add(r);
+			}	
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			ex.getMessage();
+		}
+		return reimburse;
+	}
+	public List<Reimbursements> getDeptHeadReimbursements(int eid){
+		PreparedStatement prepstate;
+		List<Reimbursements> reimburse = new ArrayList<>();
+		String sql = "select * from reimbursements r join employees e on e.eid = r.eid join employees emp on emp.eid = e.departmenthead where e.departmenthead=?";
+		try(Connection conn = ConnectionUtil.getConnection()){
+			prepstate = conn.prepareStatement(sql);
+			prepstate.setInt(1,  eid);
+			ResultSet rs = prepstate.executeQuery();
+			while(rs.next()) {
+				int rid = rs.getInt("rid");
+				double amount = rs.getDouble("reimbursement");
+				double cost = rs.getDouble("cost");
+				String status = rs.getString("status");
+				String rtype = rs.getString("rtype");
+				String description = rs.getString("description"); 		
 				
 				Reimbursements r = new Reimbursements(rid, eid, cost, amount, rtype, description, status);
 				reimburse.add(r);

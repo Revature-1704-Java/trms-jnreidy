@@ -26,6 +26,9 @@ public class Employees {
 		Available = available;
 		this.password = password;
 	}
+	public Employees(int eid) {
+		this.eid = eid;
+	}
 	public int getEid() {
 		return eid;
 	}
@@ -48,13 +51,13 @@ public class Employees {
 	public int getDeptHead() {
 		return deptHead;
 	}
-	public void setDeptHead(int deptHead) {
-		this.deptHead = deptHead;
+	public void setDeptHead(int b) {
+		this.deptHead = b;
 	}
-	public boolean isIsdeptHead() {
+	public boolean isDeptHead() {
 		return isdeptHead;
 	}
-	public void setIsdeptHead(boolean isdeptHead) {
+	public void setIsDeptHead(boolean isdeptHead) {
 		this.isdeptHead = isdeptHead;
 	}
 	public boolean isBenCo() {

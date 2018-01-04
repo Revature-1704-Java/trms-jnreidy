@@ -1,6 +1,7 @@
 package com.revature.beans;
 
 public class Reimbursements {
+	
 	private int rid;
 	private int eid;
 	private double cost;
@@ -20,7 +21,11 @@ public class Reimbursements {
 		this.description = description;
 		this.status = status;
 	}
-
+	@Override
+	public String toString() {
+		return "Reimbursements [rid=" + rid + ", eid=" + eid + ", cost=" + cost + ", reimbursement=" + reimbursement
+				+ ", rtype=" + rtype + ", description=" + description + ", status=" + status + "]";
+	}
 	public Reimbursements() {}
 	
 	public int getRid() {

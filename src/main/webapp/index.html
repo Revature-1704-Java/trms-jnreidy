@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>welcome to index</h1>
+	<h2>get</h2>
+	<form action="HelloServlet" method="Get">
+		fname = <input type="text" name="firstName"><br/>
+		lname = <input type="text" name="lastName"><br/>
+		<input type="submit" value="GET">
+	</form>
+	<h2>post</h2>
+	<form action="HelloServlet" method="post">
+		<input type="submit" value="POST">
+	</form>
+	
+	<h2>forward or redirect</h2>
+	<form action="ForwardRedirectServlet" method="GET">
+	<input type="submit" name="Go">
+	</form>
+	
+	<h2>Login</h2>
+	<form action="login" method="POST">
+		user = <input type="text" name="user"><br/>
+		pass = <input type="password" name="pass"><br/>
+		<button type="submit" class="btn_1">Submit</button>
+	</form>
+</body>
+</html>

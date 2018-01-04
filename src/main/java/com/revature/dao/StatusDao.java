@@ -32,4 +32,21 @@ public class StatusDao {
 			ex.printStackTrace();
 		}
 	}
+	public void createStatus(int rid, int supervisor) {
+		PreparedStatement prepstate;
+		String sql;
+		if(supervisor == 0) {
+			sql = "insert into rstatus values(?, ?, 'Approved', 'Pending', 'Pending')";
+		} else {
+			sql = "insert into rstatus values(?, ?, 'Pending', 'Pending', 'Pending')";
+		}
+		try(Connection conn = ConnectionUtil.getConnection()){
+			prepstate = conn.prepareStatement(sql);
+			prepstate.setInt(1,  rid);
+			prepstate.setInt(2, rid);
+			ResultSet rs = prepstate.executeQuery();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 }

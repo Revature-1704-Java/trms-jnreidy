@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +14,7 @@ import com.revature.beans.Employees;
 import com.revature.beans.Reimbursements;
 import com.revature.dao.ReimbursementDao;
 
-
-@WebServlet("/DeptHeadView")
-public class DeptHeadViewServlet extends HttpServlet {
+public class BenCoView extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -25,9 +22,9 @@ public class DeptHeadViewServlet extends HttpServlet {
 		boolean login = (boolean) session.getAttribute("login");
 		if(login) {
 			ReimbursementDao dao = new ReimbursementDao();
-			List<Reimbursements> reimb = dao.getDeptHeadReimbursements(emp.getEid());
+			List<Reimbursements> reimb = dao.getAllReimbursements();
 			session.setAttribute("reimbursements", reimb);
-			RequestDispatcher rd = request.getRequestDispatcher("DeptHead.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("BenCoView.jsp");
 			rd.forward(request, response);			
 		} else {
 			response.sendRedirect("login");
@@ -38,5 +35,4 @@ public class DeptHeadViewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

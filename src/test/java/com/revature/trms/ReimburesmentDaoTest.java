@@ -22,5 +22,11 @@ public class ReimburesmentDaoTest {
 		r = dao.getMyReimbursements(rid);
 		assertEquals(r.get(0).getRtype(), rtest.getRtype());
 	}
-
+	@Test
+	public void MaxTest() {
+		int max = 42;
+		int maxtest;
+		maxtest = dao.getMostRecentEntry();
+		assertEquals(max, maxtest);
+	}
 }

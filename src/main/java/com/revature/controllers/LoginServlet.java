@@ -39,7 +39,6 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("emp", emp);
 			RequestDispatcher rd = request.getRequestDispatcher("DeptHeadView");
 			rd.forward(request, response);
-
 		}
 		else if(emp.getEid() > 0){
 			session.setAttribute("emp", emp);

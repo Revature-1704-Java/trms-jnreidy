@@ -1,0 +1,269 @@
+--------------------------------------------------------
+--  File created - Friday-January-05-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table EMPLOYEES
+--------------------------------------------------------
+
+  CREATE TABLE "TRMS"."EMPLOYEES" 
+   (	"EID" NUMBER(*,0), 
+	"SUPERVISOR" NUMBER(*,0), 
+	"ISDEPTHEAD" NUMBER, 
+	"ISBENCO" NUMBER, 
+	"FIRSTNAME" VARCHAR2(20 BYTE), 
+	"LASTNAME" VARCHAR2(20 BYTE), 
+	"EMAIL" VARCHAR2(200 BYTE), 
+	"AVAILABLEREIMBURSEMENT" NUMBER(*,0) DEFAULT 1000, 
+	"PASSWORD" NUMBER(*,0), 
+	"DEPARTMENTHEAD" NUMBER, 
+	"ISSUP" NUMBER(*,0)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table GRADED
+--------------------------------------------------------
+
+  CREATE TABLE "TRMS"."GRADED" 
+   (	"GID" NUMBER(*,0), 
+	"RID" NUMBER(*,0), 
+	"GRADE" VARCHAR2(20 BYTE), 
+	"STATUS" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table RADD
+--------------------------------------------------------
+
+  CREATE TABLE "TRMS"."RADD" 
+   (	"ADDID" NUMBER(*,0), 
+	"RID" NUMBER(*,0), 
+	"FILENAME" VARCHAR2(200 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table REIMBURSEMENTS
+--------------------------------------------------------
+
+  CREATE TABLE "TRMS"."REIMBURSEMENTS" 
+   (	"RID" NUMBER(*,0), 
+	"EID" NUMBER(*,0), 
+	"COST" NUMBER(10,2), 
+	"REIMBURSEMENT" NUMBER(5,2), 
+	"RTYPE" VARCHAR2(200 BYTE), 
+	"DESCRIPTION" VARCHAR2(200 BYTE), 
+	"STATUS" VARCHAR2(20 BYTE), 
+	"RDATE" DATE, 
+	"RLOCATION" VARCHAR2(200 BYTE), 
+	"GRADINGFORMAT" VARCHAR2(200 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table RSTATUS
+--------------------------------------------------------
+
+  CREATE TABLE "TRMS"."RSTATUS" 
+   (	"SID" NUMBER(*,0), 
+	"RID" NUMBER(*,0), 
+	"DSUP" VARCHAR2(200 BYTE), 
+	"DEPTHEAD" VARCHAR2(200 BYTE), 
+	"BENCO" VARCHAR2(200 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Sequence AUTOINCREMENT
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TRMS"."AUTOINCREMENT"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence AUTOINCREMENTEMPLOYEES
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TRMS"."AUTOINCREMENTEMPLOYEES"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 41 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence AUTOINCREMENTEMPLOYEESNEW
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TRMS"."AUTOINCREMENTEMPLOYEESNEW"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 23 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence AUTOINCREMENTREIMBURSEMENT
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "TRMS"."AUTOINCREMENTREIMBURSEMENT"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 81 CACHE 20 NOORDER  NOCYCLE ;
+REM INSERTING into TRMS.EMPLOYEES
+SET DEFINE OFF;
+Insert into TRMS.EMPLOYEES (EID,SUPERVISOR,ISDEPTHEAD,ISBENCO,FIRSTNAME,LASTNAME,EMAIL,AVAILABLEREIMBURSEMENT,PASSWORD,DEPARTMENTHEAD,ISSUP) values (2,null,1,0,'John','Reidy','johnreidy@gmail.com',1000,-66034769,null,null);
+Insert into TRMS.EMPLOYEES (EID,SUPERVISOR,ISDEPTHEAD,ISBENCO,FIRSTNAME,LASTNAME,EMAIL,AVAILABLEREIMBURSEMENT,PASSWORD,DEPARTMENTHEAD,ISSUP) values (4,null,0,0,'Pat','Reidy','pr@gmail.com',1000,-66034769,2,1);
+Insert into TRMS.EMPLOYEES (EID,SUPERVISOR,ISDEPTHEAD,ISBENCO,FIRSTNAME,LASTNAME,EMAIL,AVAILABLEREIMBURSEMENT,PASSWORD,DEPARTMENTHEAD,ISSUP) values (5,null,0,1,'Ed','Reidy','er@gmail.com',1000,-66034769,2,null);
+Insert into TRMS.EMPLOYEES (EID,SUPERVISOR,ISDEPTHEAD,ISBENCO,FIRSTNAME,LASTNAME,EMAIL,AVAILABLEREIMBURSEMENT,PASSWORD,DEPARTMENTHEAD,ISSUP) values (6,4,0,0,'Rita','C','rc@gmail.com',1000,-66034769,2,null);
+REM INSERTING into TRMS.GRADED
+SET DEFINE OFF;
+REM INSERTING into TRMS.RADD
+SET DEFINE OFF;
+REM INSERTING into TRMS.REIMBURSEMENTS
+SET DEFINE OFF;
+Insert into TRMS.REIMBURSEMENTS (RID,EID,COST,REIMBURSEMENT,RTYPE,DESCRIPTION,STATUS,RDATE,RLOCATION,GRADINGFORMAT) values (63,6,200,180,'Technical Training','Java Help','Approved',null,'Online','Pass/Fail');
+Insert into TRMS.REIMBURSEMENTS (RID,EID,COST,REIMBURSEMENT,RTYPE,DESCRIPTION,STATUS,RDATE,RLOCATION,GRADINGFORMAT) values (65,5,2,1.6,'University Course','j','Approved',null,'j','Pass/Fail');
+Insert into TRMS.REIMBURSEMENTS (RID,EID,COST,REIMBURSEMENT,RTYPE,DESCRIPTION,STATUS,RDATE,RLOCATION,GRADINGFORMAT) values (66,5,1,0.8,'University Course','f','Approved',null,'f','Pass/Fail');
+Insert into TRMS.REIMBURSEMENTS (RID,EID,COST,REIMBURSEMENT,RTYPE,DESCRIPTION,STATUS,RDATE,RLOCATION,GRADINGFORMAT) values (1,6,300,300,'Certification','OCA Java','Approved',to_date('31-JAN-18','DD-MON-RR'),'Reston Virginia','Pass Fail');
+Insert into TRMS.REIMBURSEMENTS (RID,EID,COST,REIMBURSEMENT,RTYPE,DESCRIPTION,STATUS,RDATE,RLOCATION,GRADINGFORMAT) values (21,4,500,400,'University Class','Introduction to Statitics','Denied',to_date('22-JAN-18','DD-MON-RR'),'Georgetown University','4.0');
+Insert into TRMS.REIMBURSEMENTS (RID,EID,COST,REIMBURSEMENT,RTYPE,DESCRIPTION,STATUS,RDATE,RLOCATION,GRADINGFORMAT) values (67,6,300,180,'Seminar','Seminar Class','Approved',null,'Online','Pass/Fail');
+Insert into TRMS.REIMBURSEMENTS (RID,EID,COST,REIMBURSEMENT,RTYPE,DESCRIPTION,STATUS,RDATE,RLOCATION,GRADINGFORMAT) values (70,4,20,16,'University Course','testing deny then approve','Approved',null,'online','Pass/Fail');
+REM INSERTING into TRMS.RSTATUS
+SET DEFINE OFF;
+Insert into TRMS.RSTATUS (SID,RID,DSUP,DEPTHEAD,BENCO) values (63,63,'Approve','Approve','Approve');
+Insert into TRMS.RSTATUS (SID,RID,DSUP,DEPTHEAD,BENCO) values (65,65,'Approve','Approve','Approve');
+Insert into TRMS.RSTATUS (SID,RID,DSUP,DEPTHEAD,BENCO) values (66,66,'Approve','Approve','Approve');
+Insert into TRMS.RSTATUS (SID,RID,DSUP,DEPTHEAD,BENCO) values (1,1,'Approve','Approve','Approve');
+Insert into TRMS.RSTATUS (SID,RID,DSUP,DEPTHEAD,BENCO) values (2,21,'Pending','Approve','Deny');
+Insert into TRMS.RSTATUS (SID,RID,DSUP,DEPTHEAD,BENCO) values (67,67,'Approve','Approve','Approve');
+Insert into TRMS.RSTATUS (SID,RID,DSUP,DEPTHEAD,BENCO) values (70,70,'Approve','Approve','Approve');
+--------------------------------------------------------
+--  DDL for Trigger AUTOPKTRIGGERE
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TRMS"."AUTOPKTRIGGERE" 
+before insert on employees 
+for each row
+begin 
+     select autoincrementemployeesnew.nextval into :new.eid from dual;
+end;
+
+/
+ALTER TRIGGER "TRMS"."AUTOPKTRIGGERE" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger AUTOPKTRIGGERR
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TRMS"."AUTOPKTRIGGERR" 
+before insert on reimbursements 
+for each row
+begin 
+    select autoincrementreimbursement.nextval into :new.rid from dual;
+end;
+
+/
+ALTER TRIGGER "TRMS"."AUTOPKTRIGGERR" ENABLE;
+--------------------------------------------------------
+--  DDL for Procedure AUTOAPPROVE
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "TRMS"."AUTOAPPROVE" (inputRid number) 
+as begin
+update Rstatus set dsup = 'approved', depthead = 'approved' where inputRid = rid;
+end;
+
+/
+--------------------------------------------------------
+--  Constraints for Table GRADED
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."GRADED" ADD PRIMARY KEY ("GID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table RADD
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."RADD" ADD PRIMARY KEY ("ADDID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table EMPLOYEES
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."EMPLOYEES" ADD UNIQUE ("EMAIL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "TRMS"."EMPLOYEES" ADD PRIMARY KEY ("EID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table RSTATUS
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."RSTATUS" ADD PRIMARY KEY ("SID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table REIMBURSEMENTS
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."REIMBURSEMENTS" ADD PRIMARY KEY ("RID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EMPLOYEES
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."EMPLOYEES" ADD FOREIGN KEY ("SUPERVISOR")
+	  REFERENCES "TRMS"."EMPLOYEES" ("EID") ENABLE;
+  ALTER TABLE "TRMS"."EMPLOYEES" ADD FOREIGN KEY ("DEPARTMENTHEAD")
+	  REFERENCES "TRMS"."EMPLOYEES" ("EID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table GRADED
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."GRADED" ADD FOREIGN KEY ("RID")
+	  REFERENCES "TRMS"."REIMBURSEMENTS" ("RID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table RADD
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."RADD" ADD FOREIGN KEY ("RID")
+	  REFERENCES "TRMS"."REIMBURSEMENTS" ("RID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table REIMBURSEMENTS
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."REIMBURSEMENTS" ADD FOREIGN KEY ("EID")
+	  REFERENCES "TRMS"."EMPLOYEES" ("EID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table RSTATUS
+--------------------------------------------------------
+
+  ALTER TABLE "TRMS"."RSTATUS" ADD CONSTRAINT "FK_REIMB" FOREIGN KEY ("RID")
+	  REFERENCES "TRMS"."REIMBURSEMENTS" ("RID") ON DELETE CASCADE ENABLE;

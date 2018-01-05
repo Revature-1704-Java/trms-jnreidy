@@ -34,6 +34,7 @@ public class EmployeeDao {
 					String lastname = rs.getString("lastname");
 					int isDeptHead = rs.getInt("isDeptHead");
 					int isBenCo = rs.getInt("isBenCo");
+					int isSup = rs.getInt("isSup");
 					emp.setEid(eid);
 					emp.setSupervisor(supervisor);
 					emp.setDeptHead(deptHead);
@@ -41,8 +42,10 @@ public class EmployeeDao {
 					emp.setLastname(lastname);
 					boolean boolBenCo = (isBenCo != 0);
 					boolean boolDeptHead = (isDeptHead != 0);
+					boolean boolSup = (isSup != 0);
 					emp.setBenCo(boolBenCo);
 					emp.setIsDeptHead(boolDeptHead);
+					emp.setSup(boolSup);
 				}
 				else {
 					return null;

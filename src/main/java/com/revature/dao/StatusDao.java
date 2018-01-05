@@ -21,9 +21,53 @@ public class StatusDao {
 			ex.printStackTrace();
 		}
 	}
+	public void BenCoApprove(int rid) {
+		PreparedStatement prepstate;
+		String sql = "update rstatus set BenCo = 'Approve' where rid = ?";
+		try(Connection conn = ConnectionUtil.getConnection()){
+			prepstate = conn.prepareStatement(sql);
+			prepstate.setInt(1,  rid);
+			ResultSet rs = prepstate.executeQuery();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	public void SupApprove(int rid) {
+		PreparedStatement prepstate;
+		String sql = "update rstatus set DSUP = 'Approve' where rid = ?";
+		try(Connection conn = ConnectionUtil.getConnection()){
+			prepstate = conn.prepareStatement(sql);
+			prepstate.setInt(1,  rid);
+			ResultSet rs = prepstate.executeQuery();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 	public void DeptHeadDeny(int rid) {
 		PreparedStatement prepstate;
 		String sql = "update rstatus set depthead = 'Deny' where rid = ?";
+		try(Connection conn = ConnectionUtil.getConnection()){
+			prepstate = conn.prepareStatement(sql);
+			prepstate.setInt(1,  rid);
+			ResultSet rs = prepstate.executeQuery();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	public void BenCoDeny(int rid) {
+		PreparedStatement prepstate;
+		String sql = "update rstatus set benco = 'Deny' where rid = ?";
+		try(Connection conn = ConnectionUtil.getConnection()){
+			prepstate = conn.prepareStatement(sql);
+			prepstate.setInt(1,  rid);
+			ResultSet rs = prepstate.executeQuery();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	public void SupDeny(int rid) {
+		PreparedStatement prepstate;
+		String sql = "update rstatus set DSUP = 'Deny' where rid = ?";
 		try(Connection conn = ConnectionUtil.getConnection()){
 			prepstate = conn.prepareStatement(sql);
 			prepstate.setInt(1,  rid);

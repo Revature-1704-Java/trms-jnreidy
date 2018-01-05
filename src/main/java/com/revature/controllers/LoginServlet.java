@@ -31,7 +31,8 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("login",  false);
 		if(emp.isBenCo() == true) {
 			session.setAttribute("emp", emp);
-			RequestDispatcher rd = request.getRequestDispatcher("BenCo.html");
+			session.setAttribute("login", true);
+			RequestDispatcher rd = request.getRequestDispatcher("BenCoView");
 			rd.forward(request, response);
 		}
 		else if(emp.isDeptHead() == true) {

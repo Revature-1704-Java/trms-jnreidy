@@ -19,13 +19,13 @@ public class ReimbursementDao {
 			prepstate = conn.prepareStatement(sql);
 			ResultSet rs = prepstate.executeQuery();
 			while(rs.next()) {
-				int rid = rs.getInt("id");
+				int rid = rs.getInt("rid");
 				int eid = rs.getInt("eid");
-				double amount = rs.getDouble("amount");
+				double amount = rs.getDouble("reimbursement");
 				double cost = rs.getDouble("cost");
 				String status = rs.getString("status");
 				String rtype = rs.getString("rtype");
-				String description = rs.getString("descripton");                        
+				String description = rs.getString("description");                        
 				
 				Reimbursements r = new Reimbursements(rid, eid, cost, amount, rtype, description, status);
 				reimburse.add(r);

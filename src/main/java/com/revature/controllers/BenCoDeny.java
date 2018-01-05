@@ -9,20 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.revature.dao.ReimbursementDao;
+import com.revature.dao.StatusDao;
 
-/**
- * Servlet implementation class DeleteReimb
- */
-@WebServlet("/DeleteReimb")
-public class DeleteReimb extends HttpServlet {
-
+@WebServlet("/benCoDeny")
+public class BenCoDeny extends HttpServlet {
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ReimbursementDao dao = new ReimbursementDao();
+		StatusDao dao = new StatusDao();
 		String rparam = request.getParameter("rid");
 		int rid = Integer.parseInt(rparam);
-		dao.deleteReimb(rid);
+		dao.BenCoDeny(rid);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

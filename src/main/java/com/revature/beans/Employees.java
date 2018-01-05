@@ -10,8 +10,15 @@ public class Employees {
 	private String firstname;
 	private String lastname;
 	private int Available;
-	private int password;	
+	private int password;
+	private boolean isSup;
 	
+	public boolean isSup() {
+		return isSup;
+	}
+	public void setSup(boolean isSup) {
+		this.isSup = isSup;
+	}
 	public Employees() {	}
 	public Employees(int eid, String username, int supervisor, int deptHead, boolean isdeptHead, boolean isBenCo, String firstname,
 			String lastname, int available, int password) {

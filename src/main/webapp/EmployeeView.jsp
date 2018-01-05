@@ -11,6 +11,7 @@
 </head>
 <body>
 <script src=view.js></script>
+<% Employees emp = (Employees) request.getSession().getAttribute("emp"); %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Tuition Reimbursement</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,16 +20,28 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/trms/Create">Create<span class="sr-only">(current)</span></a>
       </li>
+      <% if(emp.isBenCo()) {%>
+      <li class="nav-item">
+      	<a class="nav-link" href="BenCoView">Approve</a>
+      </li>
+      <% } else if(emp.isDeptHead()) { %>
+      <li class="nav-item">
+      	<a class="nav-link" href="DeptHeadView">Approve</a>
+      </li>
+      <% } else if(emp.isSup()) { %>
+      <li class="nav-item">
+      	<a class="nav-link" href="SupervisorView">Approve</a>
+      </li>
+      <% } %>
       <li class="nav-item">
         <a class="nav-link" href="login">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
-<% Employees emp = (Employees) request.getSession().getAttribute("emp"); %>
 <h1>Hello <%= emp.getFirstname() %> <%= emp.getLastname()%></h1>
 <table id="ReimbursementTable" border="1">
 	<tbody>
@@ -36,6 +49,7 @@
 			<td>ReimbursementID</td>
 			<td>EmployeeID</td>
 			<td>Cost</td>
+			<td>Expected Reimbursement</td>
 			<td>Type</td>
 			<td>Description</td>
 			<td>Status</td>
@@ -47,6 +61,7 @@
 			<td><%= reimb.get(i).getRid() %></td>
 			<td><%= reimb.get(i).getEid()%></td>
 			<td><%= reimb.get(i).getCost()%></td>
+			<td><%= reimb.get(i).getReimbursement() %></td>
 			<td><%= reimb.get(i).getRtype()%></td>
 			<td><%= reimb.get(i).getDescription() %></td>
 			<td><%= reimb.get(i).getStatus() %> </td>	

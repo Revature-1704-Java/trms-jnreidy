@@ -12,15 +12,16 @@ import javax.servlet.http.HttpSession;
 import com.revature.dao.ReimbursementDao;
 import com.revature.dao.StatusDao;
 
-@WebServlet("/benCoDeny")
-public class BenCoDeny extends HttpServlet {
-    
+
+@WebServlet("/dSupApprove")
+public class SupApprove extends HttpServlet {
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		StatusDao dao = new StatusDao();
 		String rparam = request.getParameter("rid");
 		int rid = Integer.parseInt(rparam);
-		dao.BenCoDeny(rid);
+		dao.SupApprove(rid);
 		ReimbursementDao rdao = new ReimbursementDao();
 		String status = dao.checkStatus(rid);
 		switch (status) {

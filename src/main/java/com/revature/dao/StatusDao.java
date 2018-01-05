@@ -76,12 +76,15 @@ public class StatusDao {
 			ex.printStackTrace();
 		}
 	}
-	public void createStatus(int rid, int supervisor) {
+	public void createStatus(int rid, int supervisor, int deptHead) {
 		PreparedStatement prepstate;
 		String sql;
 		if(supervisor == 0) {
-			sql = "insert into rstatus values(?, ?, 'Approved', 'Pending', 'Pending')";
-		} else {
+			sql = "insert into rstatus values(?, ?, 'Approve', 'Pending', 'Pending')";
+		} else if(deptHead == 0) {
+			sql = "insert into rstatus values(?, ?, 'Approve', 'Approve', 'Pending')";
+		}
+		else {
 			sql = "insert into rstatus values(?, ?, 'Pending', 'Pending', 'Pending')";
 		}
 		try(Connection conn = ConnectionUtil.getConnection()){
@@ -92,5 +95,29 @@ public class StatusDao {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+	public String checkStatus(int rid) {
+		PreparedStatement ps;
+		String sql = "select * from rstatus where rid = ?";
+		try(Connection conn = ConnectionUtil.getConnection()){
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, rid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				String dsup = rs.getString("dsup");
+				String benco = rs.getString("benco");
+				String deptHead = rs.getString("depthead");
+				if(dsup.equals("Approve") && benco.equals("Approve") && deptHead.equals("Approve")) {
+					return "Approve";
+				} else if(dsup.equals("Deny") || benco.equals("Deny") || deptHead.equals("Deny")) {
+					return "Deny";
+				} else {
+					return "Pending";
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return "Pending";
 	}
 }

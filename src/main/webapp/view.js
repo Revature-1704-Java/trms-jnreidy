@@ -47,3 +47,13 @@ function benCoDeny(i){
 	XHR.onreadystatechange = processXML;
 	XHR.send();
 }
+function dSupApprove(i){
+	XHR.open("get", "/trms/dSupApprove?rid=" + i);
+	XHR.onreadystatechange = processXML;
+	XHR.send();
+}
+function dSupDeny(i){
+	XHR.open("get", "/trms/dSupDeny?rid=" + i);
+	XHR.onreadystatechange = processXML;
+	XHR.send();
+}

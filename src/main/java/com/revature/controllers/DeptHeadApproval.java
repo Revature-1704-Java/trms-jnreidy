@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.revature.dao.ReimbursementDao;
 import com.revature.dao.StatusDao;
 
 /**
@@ -24,6 +25,18 @@ public class DeptHeadApproval extends HttpServlet {
 		String rparam = request.getParameter("rid");
 		int rid = Integer.parseInt(rparam);
 		dao.DeptHeadApprove(rid);
+		ReimbursementDao rdao = new ReimbursementDao();
+		String status = dao.checkStatus(rid);
+		switch (status) {
+		case "Approve":
+			rdao.updateStatus("Approved", rid);
+			break;
+		case "Deny":
+			rdao.updateStatus("Denied", rid);
+			break;
+		default:
+			break;
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

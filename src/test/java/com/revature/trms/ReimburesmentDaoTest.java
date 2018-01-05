@@ -24,9 +24,15 @@ public class ReimburesmentDaoTest {
 	}
 	@Test
 	public void MaxTest() {
-		int max = 42;
+		int max = 62;
 		int maxtest;
 		maxtest = dao.getMostRecentEntry();
 		assertEquals(max, maxtest);
+	}
+	@Test
+	public void deptHeadEidTest() {
+		r = dao.getDeptHeadReimbursements(2);
+		System.out.println(r.get(0).getEid());
+		assertEquals(r.get(0).getEid(), 4);
 	}
 }

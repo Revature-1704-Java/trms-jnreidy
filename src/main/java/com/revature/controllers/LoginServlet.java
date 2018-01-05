@@ -41,6 +41,12 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("DeptHeadView");
 			rd.forward(request, response);
 		}
+		else if(emp.isSup() == true) {
+			session.setAttribute("login",  true);
+			session.setAttribute("emp", emp);
+			RequestDispatcher rd = request.getRequestDispatcher("SupervisorView");
+			rd.forward(request, response);
+		}
 		else if(emp.getEid() > 0){
 			session.setAttribute("emp", emp);
 			session.setAttribute("login", true);

@@ -7,7 +7,7 @@
 
 <meta charset="UTF-8">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-<title>DepartmentHead</title>
+<title>Supervisor</title>
 </head>
 <body>
 <script src=view.js></script>
@@ -54,8 +54,8 @@
 			<td><%= reimb.get(i).getRtype()%></td>
 			<td><%= reimb.get(i).getDescription() %></td>
 			<td><%= reimb.get(i).getStatus() %> </td>	
-			<td><button id="approveButton<%=reimb.get(i).getRid()%>" type="button" onclick='deptHeadApprove(<%=reimb.get(i).getRid()%>)'>Approve</button>
-			<td><button id="denyButton<%=reimb.get(i).getRid()%>" type="button" onclick='deptHeadDeny(<%=reimb.get(i).getRid()%>)'>Deny</button></td>
+			<td><button id="approveButton<%=reimb.get(i).getRid()%>" type="button" onclick='dSupApprove(<%=reimb.get(i).getRid()%>)'>Approve</button>
+			<td><button id="denyButton<%=reimb.get(i).getRid()%>" type="button" onclick='dSupDeny(<%=reimb.get(i).getRid()%>)'>Deny</button></td>
 		</tr> 
 		<% } %>	
 	</tbody>

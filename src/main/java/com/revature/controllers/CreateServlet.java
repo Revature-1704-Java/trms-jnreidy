@@ -33,7 +33,7 @@ public class CreateServlet extends HttpServlet {
 		dao.createReimbursement(eid, cost, rtype, description, location, grade);
 		int rid = dao.getMostRecentEntry();
 		StatusDao sdao = new StatusDao();
-		sdao.createStatus(rid, emp.getSupervisor());
+		sdao.createStatus(rid, emp.getSupervisor(), emp.getDeptHead());
 		response.sendRedirect("EmployeeView");
 
 	}

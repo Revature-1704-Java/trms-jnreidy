@@ -9,6 +9,7 @@ public class Reimbursements {
 	private String rtype;
 	private String description;
 	private String status;
+	private String name;
 	
 	public Reimbursements(int rid, int eid, double cost, double reimbursement, String rtype, String description,
 			String status) {
@@ -20,6 +21,24 @@ public class Reimbursements {
 		this.rtype = rtype;
 		this.description = description;
 		this.status = status;
+	}
+	public Reimbursements(int rid, int eid, double cost, double reimbursement, String rtype, String description,
+			String status, String name) {
+		super();
+		this.rid = rid;
+		this.eid = eid;
+		this.cost = cost;
+		this.reimbursement = reimbursement;
+		this.rtype = rtype;
+		this.description = description;
+		this.status = status;
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	@Override
 	public String toString() {

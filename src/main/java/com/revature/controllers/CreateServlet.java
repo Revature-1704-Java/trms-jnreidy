@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,8 @@ import com.revature.dao.StatusDao;
 @WebServlet("/Create")
 public class CreateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("Create.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("Create.jsp");
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

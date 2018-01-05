@@ -7,6 +7,8 @@
 
 <meta charset="UTF-8">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<link rel="stylesheet" href="table.css">
+
 <title>EmployeeView</title>
 </head>
 <body>
@@ -42,12 +44,15 @@
     </ul>
   </div>
 </nav>
-<h1>Hello <%= emp.getFirstname() %> <%= emp.getLastname()%></h1>
+<h1 style="color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 1; margin-left: 0.5cm;">Hello <%= emp.getFirstname() %> <%= emp.getLastname()%></h1>
+<% List<Reimbursements> reimb = (List<Reimbursements>) request.getSession().getAttribute("reimbursements");
+	if(reimb.size() != 0) {
+%>
 <table id="ReimbursementTable" border="1">
 	<tbody>
 		<tr>
 			<td>ReimbursementID</td>
-			<td>EmployeeID</td>
+			<td>EmployeeId</td>
 			<td>Cost</td>
 			<td>Expected Reimbursement</td>
 			<td>Type</td>
@@ -55,7 +60,6 @@
 			<td>Status</td>
 			<td>Delete</td>
 		</tr>
-		<% List<Reimbursements> reimb = (List<Reimbursements>) request.getSession().getAttribute("reimbursements");%>
 		<% for(int i = 0; i < reimb.size(); i++){ %>
 		<tr>
 			<td><%= reimb.get(i).getRid() %></td>
@@ -64,11 +68,20 @@
 			<td><%= reimb.get(i).getReimbursement() %></td>
 			<td><%= reimb.get(i).getRtype()%></td>
 			<td><%= reimb.get(i).getDescription() %></td>
-			<td><%= reimb.get(i).getStatus() %> </td>	
+			<% if(reimb.get(i).getStatus().equals("Pending")) {%>
+			<td style="color: #ffcc00" align="center"><%= reimb.get(i).getStatus() %> </td>
+			<% } else if(reimb.get(i).getStatus().equals("Approved")) {%>	
+			<td style="color: #14cc14" align="center"><%= reimb.get(i).getStatus() %> </td>
+			<% } else if(reimb.get(i).getStatus().equals("Denied")) {%>	
+			<td style="color: #ED4337;" align="center"><%= reimb.get(i).getStatus() %> </td>
+			<% } %>
 			<td><button id="deleteButton<%=reimb.get(i).getRid()%>" type="button" onclick='deleteReimb(<%=reimb.get(i).getRid()%>)'>Delete</button>
 		</tr> 
 		<% } %>	
 	</tbody>
 </table>
+<% } else { %>
+<p class="noreimbursements" style="margin-left: 1cm">You have not submitted any Reimbursements click the create tab above to create a new one<p>
+<% } %>
 </body>
 </html>

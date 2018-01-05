@@ -26,7 +26,6 @@ public class DeptHeadViewServlet extends HttpServlet {
 		if(login) {
 			ReimbursementDao dao = new ReimbursementDao();
 			List<Reimbursements> reimb = dao.getDeptHeadReimbursements(emp.getEid());
-			System.out.println(reimb);
 			session.setAttribute("reimbursements", reimb);
 			RequestDispatcher rd = request.getRequestDispatcher("DeptHead.jsp");
 			rd.forward(request, response);			

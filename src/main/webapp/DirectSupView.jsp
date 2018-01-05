@@ -7,6 +7,7 @@
 
 <meta charset="UTF-8">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<link rel="stylesheet" href="table.css">
 <title>Supervisor</title>
 </head>
 <body>
@@ -33,11 +34,11 @@
 </nav>
 <% Employees emp = (Employees) request.getSession().getAttribute("emp"); %>
 <h1>Hello <%= emp.getFirstname() %> <%= emp.getLastname()%></h1>
-<table id="ReimbursementTable" border="1">
+<table id="ReimbursementTable" border="1" style="margin-left: 1cm;">
 	<tbody>
 		<tr>
 			<td>ReimbursementID</td>
-			<td>EmployeeID</td>
+			<td>Name</td>
 			<td>Cost</td>
 			<td>Type</td>
 			<td>Description</td>
@@ -49,11 +50,17 @@
 		<% for(int i = 0; i < reimb.size(); i++){ %>
 		<tr>
 			<td><%= reimb.get(i).getRid() %></td>
-			<td><%= reimb.get(i).getEid()%></td>
+			<td><%= reimb.get(i).getName()%></td>
 			<td><%= reimb.get(i).getCost()%></td>
 			<td><%= reimb.get(i).getRtype()%></td>
 			<td><%= reimb.get(i).getDescription() %></td>
-			<td><%= reimb.get(i).getStatus() %> </td>	
+			<% if(reimb.get(i).getStatus().equals("Pending")) {%>
+			<td style="color: #ffcc00" align="center"><%= reimb.get(i).getStatus() %> </td>
+			<% } else if(reimb.get(i).getStatus().equals("Approved")) {%>	
+			<td style="color: #14cc14" align="center"><%= reimb.get(i).getStatus() %> </td>
+			<% } else if(reimb.get(i).getStatus().equals("Denied")) {%>	
+			<td style="color: #ED4337;" align="center"><%= reimb.get(i).getStatus() %> </td>
+			<% } %>
 			<td><button id="approveButton<%=reimb.get(i).getRid()%>" type="button" onclick='dSupApprove(<%=reimb.get(i).getRid()%>)'>Approve</button>
 			<td><button id="denyButton<%=reimb.get(i).getRid()%>" type="button" onclick='dSupDeny(<%=reimb.get(i).getRid()%>)'>Deny</button></td>
 		</tr> 

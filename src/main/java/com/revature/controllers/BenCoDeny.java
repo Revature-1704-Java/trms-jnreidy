@@ -30,7 +30,8 @@ public class BenCoDeny extends HttpServlet {
 		case "Deny":
 			rdao.updateStatus("Denied", rid);
 			break;
-		default:
+		case "Pending":
+			rdao.updateStatus("Pending", rid);
 			break;
 		}
 	}

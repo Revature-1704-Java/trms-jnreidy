@@ -11,7 +11,7 @@
 
 <title>Create Reimbursement</title>
 </head>
-<body style="background-color:#FFFAF0;">
+<body style="background-color:#f7fdfa;">
 <% Employees emp = (Employees) request.getSession().getAttribute("emp"); %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

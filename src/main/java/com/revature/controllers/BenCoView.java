@@ -22,7 +22,7 @@ public class BenCoView extends HttpServlet {
 		HttpSession session = request.getSession();
 		Employees emp = (Employees) session.getAttribute("emp");
 		boolean login = (boolean) session.getAttribute("login");
-		if(login) {
+		if(login && emp.isBenCo()) {
 			ReimbursementDao dao = new ReimbursementDao();
 			List<Reimbursements> reimb = dao.getAllReimbursements();
 			session.setAttribute("reimbursements", reimb);

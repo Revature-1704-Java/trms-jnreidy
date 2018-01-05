@@ -53,8 +53,8 @@
 		<tr>
 			<td>ReimbursementID</td>
 			<td>EmployeeId</td>
+			<td>Reimbursement</td>
 			<td>Cost</td>
-			<td>Expected Reimbursement</td>
 			<td>Type</td>
 			<td>Description</td>
 			<td>Status</td>

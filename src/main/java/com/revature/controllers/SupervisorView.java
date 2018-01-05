@@ -22,7 +22,7 @@ public class SupervisorView extends HttpServlet {
 		HttpSession session = request.getSession();
 		Employees emp = (Employees) session.getAttribute("emp");
 		boolean login = (boolean) session.getAttribute("login");
-		if(login) {
+		if(login && emp.isSup()) {
 			ReimbursementDao dao = new ReimbursementDao();
 			List<Reimbursements> reimb = dao.getSupervisorReimbursements(emp.getEid());
 			session.setAttribute("reimbursements", reimb);

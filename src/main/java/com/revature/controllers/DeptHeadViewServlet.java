@@ -23,7 +23,7 @@ public class DeptHeadViewServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Employees emp = (Employees) session.getAttribute("emp");
 		boolean login = (boolean) session.getAttribute("login");
-		if(login) {
+		if(login && emp.isDeptHead()) {
 			ReimbursementDao dao = new ReimbursementDao();
 			List<Reimbursements> reimb = dao.getDeptHeadReimbursements(emp.getEid());
 			session.setAttribute("reimbursements", reimb);
